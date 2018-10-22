@@ -1,0 +1,77 @@
+<%= form_with(model: player, local: true) do |form| %>
+  <% if player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+      <% player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_area :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points %>
+    <%= form.number_field :points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rebounds %>
+    <%= form.number_field :rebounds %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assists %>
+    <%= form.number_field :assists %>
+  </div>
+
+  <div class="field">
+    <%= form.label :steals %>
+    <%= form.number_field :steals %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blocks %>
+    <%= form.number_field :blocks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fg %>
+    <%= form.text_field :fg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ft %>
+    <%= form.text_field :ft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :threes %>
+    <%= form.number_field :threes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :turnovers %>
+    <%= form.number_field :turnovers %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
