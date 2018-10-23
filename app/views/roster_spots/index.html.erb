@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Roster Spots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roster_spots.each do |roster_spot| %>
+      <tr>
+        <td><%= link_to 'Show', roster_spot %></td>
+        <td><%= link_to 'Edit', edit_roster_spot_path(roster_spot) %></td>
+        <td><%= link_to 'Destroy', roster_spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roster Spot', new_roster_spot_path %>

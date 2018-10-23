@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /players
   # GET /players.json
@@ -49,6 +50,7 @@ class PlayersController < ApplicationController
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to @player
   end
 
   # DELETE /players/1
@@ -59,6 +61,7 @@ class PlayersController < ApplicationController
       format.html { redirect_to players_url, notice: 'Player was successfully destroyed.' }
       format.json { head :no_content }
     end
+    redirect_to players_path
   end
 
   private

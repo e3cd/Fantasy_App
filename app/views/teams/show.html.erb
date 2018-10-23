@@ -1,14 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @team.image %>
-</p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<% if !current_user.nil? && current_user == @team.user %>
+  <%= link_to "Edit Team Info", edit_team_path(@team) %><br />	  <%= link_to "Edit Team Info", edit_team_path(@team) %><br />
+  <%= link_to "Delete Team", team_path(@team), method: :delete %>	  <%= link_to "Delete Team", team_path(@team), method: :delete %>
+<% end %> 	
+ <h3>Roster</h3>
+ <% if !!@team.players %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Position</th>  
+    <th>Points</th>
+    <th>Rebounds</th>
+    <th>Assists</th>  
+    <th>Steals</th>
+    <th>Blocks</th>
+    <th>Fg</th>  
+    <th>Ft</th>
+    <th>Threes</th>
+    <th>Turnovers</th>
+    <th>Price</th>
+  </tr>
+  <% @team.players.each do |player| %>
+  <tr>
+    <th><%= link_to player.name, player %></th>
+    <th><%= player.image %></th>
+    <th><%= player.position %></th>
+    <th><%= player.points %></th>
+    <th><%= player.rebounds %></th>
+    <th><%= player.assists %></th>
+    <th><%= player.steals %></th>
+    <th><%= player.blocks %></th>
+    <th><%= player.fg %></th>
+    <th><%= player.ft %></th>
+     <th><%= player.threes %></th>
+    <th><%= player.turnovers %></th>
+    <th><%= player.price %></th>
+    <% if @team.user == current_user %>
+      <th><%= link_to "Drop Player", roster_spot_path(player_id: player.id, team_id: @team.id), method: :delete %></th>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+ <% else %>
+  <p>No players added yet.</p>
+<% end %>

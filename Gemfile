@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+
 gem 'sprockets-rails'
 gem 'bootstrap', '~> 4.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -57,3 +58,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.5"
+
+gem "faker", "~> 1.9"
+gem "carrierwave", "~> 1.2"

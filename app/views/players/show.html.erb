@@ -60,5 +60,11 @@
   <%= @player.turnovers %>
 </p>
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+<% if !current_user.nil? %>
+  <div>
+  <%= link_to "Edit Player Info", edit_player_path(@player) %>
+  </div>
+  <div>
+  <%= link_to "Delete Player", player_path(@player), method: :delete %>
+  </div>
+<% end %>
